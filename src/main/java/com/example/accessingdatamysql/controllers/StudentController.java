@@ -5,6 +5,8 @@ import com.example.accessingdatamysql.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class StudentController {
@@ -17,8 +19,14 @@ public class StudentController {
         studentService.createStudent(student);
     }
 
-    @DeleteMapping(value = "/student")
-    public void deleteStudent(@RequestBody Student student){
-        studentService.deleteStudent(student);}
+    @DeleteMapping(value = "/student/{Id}")
+    public void deleteStudent(@PathVariable (name = "Id") Integer id){
+        studentService.deleteStudent(id);
+    }
+
+    @GetMapping(value = "/student{grade}")
+    public List<Student> findStudent(@PathVariable (name = "grade")Integer grade){
+         return studentService.findStudents(grade);
+    }
 
 }
