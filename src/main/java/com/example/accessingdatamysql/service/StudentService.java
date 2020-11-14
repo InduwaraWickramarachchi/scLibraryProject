@@ -10,5 +10,10 @@ public interface StudentService {
 
     void deleteStudent(Integer Id);
 
-    List<Student> findStudents(Integer grade);
+    List<Student> findStudents(String grade);
+
+    Student updateStudent(Student studentUpdate);
+
+    Student updateNumber(Integer studentId, Integer contactNumber);
+
 }
